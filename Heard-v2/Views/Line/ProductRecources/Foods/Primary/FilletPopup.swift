@@ -25,7 +25,7 @@ struct FilletPopup: View{
                     FilletData.MultiBatch()
                     FilletData.sendRequest()
                     LineItems.FilletPopup.toggle()
-                    Requests.updateRequestData(RequestUpdate: RequestModel(id: FilletData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(FilletData.FinalValue), productImage: "filletimg", productTitle: "Fillets"), updateAmount: String(FilletData.FinalValue), time: 0)
+                    Requests.updateRequestData(RequestUpdate: RequestModel(id: FilletData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(FilletData.FinalValue), productImage: "filletimg", productTitle: "Fillets"), updateAmount: String(FilletData.FinalValue))
                 }, label: {
                     Text("Send")
                         .bold()
@@ -59,7 +59,7 @@ struct filletCommonRequests: View{
 
     var body: some View{
         ForEach(FilletCrVM.FilletCommonRequest) { CommonRequestModel in
-            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: FilletData.Filleto1, o2: FilletData.Filleto2, o3: FilletData.Filleto3, sliderValue: FilletData.sliderValue, function1: FilletData.o1True, function2: FilletData.o2True, function3: FilletData.o3True, functionH: FilletData.notHF, functionF: FilletData.notHF)
+            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: FilletData.Filleto1, o2: FilletData.Filleto2, o3: FilletData.Filleto3, oH: false, oF: true, sliderValue: FilletData.sliderValue, function1: FilletData.o1True, function2: FilletData.o2True, function3: FilletData.o3True, functionH: FilletData.notHF, functionF: FilletData.notHF)
         }
     }
 }

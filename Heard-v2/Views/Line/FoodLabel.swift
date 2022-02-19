@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FoodLabelS: View {
-    @ObservedObject var LineItems = LineViewModel()
+    @EnvironmentObject var LineItems: LineViewModel
 
     var body: some View{
         VStack(spacing: 30){

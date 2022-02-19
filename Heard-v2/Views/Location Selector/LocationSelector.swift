@@ -14,6 +14,7 @@ struct LocationSelector: View {
     
     var body: some View {
         VStack(spacing: 30){
+            Spacer()
             ForEach(LocationItems.L_B_Buttons) { item in
                 Button(action: {
                     LocationItems.NavigationState = item.title.lowercased()
@@ -25,15 +26,11 @@ struct LocationSelector: View {
                 })
             }
             
-            Button(action: {
-                LocationItems.updateData(BLupdate: BreadLineModel(id: "Tj6nbTrLlNvnQjKe0DJm", title: "update"))
-            }, label: {
-                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-            })
             NavigationLink(destination: MasterRequest2().navigationBarBackButtonHidden(false), tag: "breading", selection: $LocationItems.NavigationState) { EmptyView()
             }
             NavigationLink(destination: LocationSelector2().navigationBarBackButtonHidden(false), tag: "line", selection: $LocationItems.NavigationState) { EmptyView()
             }
+            
         }
         
     }
@@ -49,6 +46,7 @@ struct LocationSelector2: View {
     
     var body: some View {
         VStack(spacing: 30){
+            Spacer()
             ForEach(LocationItems.P_S_Buttons) { BreadLineModel in
                 Button(action: {
                     LocationItems.NavigationState = BreadLineModel.title.lowercased()
@@ -68,7 +66,7 @@ struct LocationSelector2: View {
         
     }
     
-}//
+}
 struct LocationSelector_Previews: PreviewProvider {
     static var previews: some View {
         LocationSelector()

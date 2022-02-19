@@ -8,13 +8,34 @@
 import SwiftUI
 
 struct locationButtonSytling: ViewModifier {
+    var size: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 400 * 0.75
+            } else {
+                return 400
+            }
+        }
+    var font: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 60 * 0.75
+            } else {
+                return 60 
+            }
+        }
+    var CRadius: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 30 * 0.7
+            } else {
+                return 30
+            }
+        }
     func body(content: Content) -> some View {
         content
-            .frame(width: 400, height: 400, alignment: .center)
+            .frame(width: size, height: size, alignment: .center)
             .background(Color.lightGray)
-            .cornerRadius(30)
+            .cornerRadius(CRadius)
             .foregroundColor(.FontBlue)
-            .font(.system(size: 60))
+            .font(.system(size: font))
     }
 }
 

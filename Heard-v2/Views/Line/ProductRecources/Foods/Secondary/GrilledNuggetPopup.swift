@@ -30,7 +30,7 @@ struct GrilledNuggetPopup: View{
                 GrilledNuggetData.MultiBatch()
                 GrilledNuggetData.sendRequest()
                 LineItems.GrilledNuggetPopup.toggle()
-                Requests.updateRequestData(RequestUpdate: RequestModel(id: GrilledNuggetData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(GrilledNuggetData.FinalValue), productImage: "GrilledNuggetsimg", productTitle: "GrilledNuggets"), updateAmount: String(GrilledNuggetData.FinalValue), time: 0)
+                Requests.updateRequestData(RequestUpdate: RequestModel(id: GrilledNuggetData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(GrilledNuggetData.FinalValue), productImage: "GrilledNuggetsimg", productTitle: "GrilledNuggets"), updateAmount: String(GrilledNuggetData.FinalValue))
             }, label: {
                 Text("Send")
                     .bold()
@@ -63,7 +63,7 @@ struct GrilledNuggetCommonRequests: View{
 
     var body: some View{
         ForEach(GrilledNuggetCrVM.GrilledNuggetCommonRequest) { CommonRequestModel in
-            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: GrilledNuggetData.GrilledNuggeto1, o2: GrilledNuggetData.GrilledNuggeto2, o3: GrilledNuggetData.GrilledNuggeto3, sliderValue: GrilledNuggetData.sliderValue, function1: GrilledNuggetData.o1True, function2: GrilledNuggetData.o2True, function3: GrilledNuggetData.o3True, functionH: GrilledNuggetData.notHF, functionF: GrilledNuggetData.notHF)
+            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: GrilledNuggetData.GrilledNuggeto1, o2: GrilledNuggetData.GrilledNuggeto2, o3: GrilledNuggetData.GrilledNuggeto3, oH: GrilledNuggetData.GrilledNuggetoH, oF: GrilledNuggetData.GrilledNuggetoF, sliderValue: GrilledNuggetData.sliderValue, function1: GrilledNuggetData.o1True, function2: GrilledNuggetData.o2True, function3: GrilledNuggetData.o3True, functionH: GrilledNuggetData.Half, functionF: GrilledNuggetData.Full)
         }
     }
 }
@@ -72,7 +72,7 @@ struct GrilledNuggetCommonRequests: View{
 struct GrilledNuggetSlider: View{
     @EnvironmentObject var GrilledNuggetData: GrilledNuggetDataVM
     var body: some View{
-        sliderReusable(SliderProduct: GrilledNuggetData.product, stepCount: GrilledNuggetData.stepCount, range: 24, sliderAmount: $GrilledNuggetData.sliderValue)
+        sliderReusable(SliderProduct: GrilledNuggetData.product, stepCount: GrilledNuggetData.stepCount, range: 12, sliderAmount: $GrilledNuggetData.sliderValue)
     }
 }
 

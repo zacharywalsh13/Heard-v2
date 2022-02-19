@@ -11,7 +11,7 @@ struct SpicyFilletPopup: View{
     @EnvironmentObject var SpicyFilletData: SpicyFilletDataVM
     @EnvironmentObject var LineItems: LineViewModel
     @ObservedObject var Requests = RequestViewModel()
-    
+
     var body: some View {
         VStack(spacing: 20){
             SpicyfilletImgage()
@@ -23,7 +23,7 @@ struct SpicyFilletPopup: View{
                 SpicyFilletData.MultiBatch()
                 SpicyFilletData.sendRequest()
                 LineItems.SpicyFilletPopup.toggle()
-                Requests.updateRequestData(RequestUpdate: RequestModel(id: SpicyFilletData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(SpicyFilletData.FinalValue), productImage: "sfilletimg", productTitle: "Sfillets"), updateAmount: String(SpicyFilletData.FinalValue), time: 0)
+                Requests.updateRequestData(RequestUpdate: RequestModel(id: SpicyFilletData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(SpicyFilletData.FinalValue), productImage: "sfilletimg", productTitle: "Sfillets"), updateAmount: String(SpicyFilletData.FinalValue))
             }, label: {
                 Text("Send")
                     .bold()
@@ -56,7 +56,7 @@ struct SpicyfilletCommonRequests: View{
 
     var body: some View{
         ForEach(SpicyFilletCrVM.SpicyFilletCommonRequest) { CommonRequestModel in
-            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: SpicyFilletData.SpicyFilleto1, o2: SpicyFilletData.SpicyFilleto2, o3: SpicyFilletData.SpicyFilleto3, sliderValue: SpicyFilletData.sliderValue, function1: SpicyFilletData.o1True, function2: SpicyFilletData.o2True, function3: SpicyFilletData.o3True, functionH: SpicyFilletData.notHF, functionF: SpicyFilletData.notHF)
+            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: SpicyFilletData.SpicyFilleto1, o2: SpicyFilletData.SpicyFilleto2, o3: SpicyFilletData.SpicyFilleto3, oH: false, oF: false, sliderValue: SpicyFilletData.sliderValue, function1: SpicyFilletData.o1True, function2: SpicyFilletData.o2True, function3: SpicyFilletData.o3True, functionH: SpicyFilletData.notHF, functionF: SpicyFilletData.notHF)
         }
     }
 }

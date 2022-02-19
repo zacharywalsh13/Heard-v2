@@ -48,6 +48,8 @@ struct CommonRequestReusable: View{
     var o1: Bool
     var o2: Bool
     var o3: Bool
+    var oH: Bool
+    var oF: Bool
     var sliderValue: Double
     var function1: () -> Void
     var function2: () -> Void
@@ -58,50 +60,40 @@ struct CommonRequestReusable: View{
     var body: some View{
         if HForNUM == "NUM" {
             HStack{
-            Button(action: {
-                function1()
-            }, label: {
-                Text("\(n1)")
-                    .modifier(BatchSelectorMods(amount: n1, n1: n1, n2: n2, n3: n3, o1: o1, o2: o2, o3: o3, SliderValue: sliderValue))
-            })
-            Button(action: {
-                function2()
-            }, label: {
-                Text("\(n2)")
-                    .modifier(BatchSelectorMods(amount: n2, n1: n1, n2: n2, n3: n3, o1: o1, o2: o2, o3: o3, SliderValue: sliderValue))
-            })
-            Button(action: {
-                function3()
-            }, label: {
-                Text("\(n3)")
-                    .modifier(BatchSelectorMods(amount: n3, n1: n1, n2: n2, n3: n3, o1: o1, o2: o2, o3: o3, SliderValue: sliderValue))
-            })
+                Button(action: {
+                    function1()
+                }, label: {
+                    Text("\(n1)")
+                        .modifier(BatchSelectorMods(amount: n1, n1: n1, n2: n2, n3: n3, o1: o1, o2: o2, o3: o3, SliderValue: sliderValue))
+                })
+                Button(action: {
+                    function2()
+                }, label: {
+                    Text("\(n2)")
+                        .modifier(BatchSelectorMods(amount: n2, n1: n1, n2: n2, n3: n3, o1: o1, o2: o2, o3: o3, SliderValue: sliderValue))
+                })
+                Button(action: {
+                    function3()
+                }, label: {
+                    Text("\(n3)")
+                        .modifier(BatchSelectorMods(amount: n3, n1: n1, n2: n2, n3: n3, o1: o1, o2: o2, o3: o3, SliderValue: sliderValue))
+                })
             }
-        }
-        if HForNUM == "HF" {
+        } else {
             HStack{
-            Button(action: {
-                functionH()
-            }, label: {
-                Text("Half Batch")
-                    .foregroundColor(Color.black)
-                    .frame(width: 205, height: 75, alignment: .center)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.black, lineWidth: 2)
-                    )
-            })
-            Button(action: {
-                functionF()
-            }, label: {
-                Text("Full Batch")
-                    .foregroundColor(Color.black)
-                    .frame(width: 205, height: 75, alignment: .center)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(Color.black, lineWidth: 2)
-                    )
-            })
+                Button(action: {
+                    functionH()
+                }, label: {
+                    Text("Half Batch")
+                        .modifier(BatchSelectorMods2(amount: "halfbag", oH: oH, oF: oF, sliderValue: sliderValue))
+                })
+                Button(action: {
+                    functionF()
+                }, label: {
+                    Text("Full Batch")
+                        .modifier(BatchSelectorMods2(amount: "fullbag", oH: oH, oF: oF, sliderValue: sliderValue))
+
+                })
             }
         }
     }
@@ -114,22 +106,15 @@ struct sliderReusable: View{
     @Binding var sliderAmount: Double
     var body: some View{
         VStack{
-        Text("OR")
-            .bold()
-        
-        Text("\(sliderAmount, specifier: "%.0f") \(SliderProduct)")
-            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-        
-        
-        Slider(value: $sliderAmount, in: 0...range, step: stepCount)
-            .padding()
-            .frame(width: 360, height: 75, alignment: .center)
-            .accentColor(Color.Cred)
-            .overlay(
-                RoundedRectangle(cornerRadius: 15.0)
-                    .stroke(lineWidth: 2.0)
-                    .foregroundColor(Color.Cred)
-            )
+            Text("OR")
+                .bold()
+            
+            Text("\(sliderAmount, specifier: "%.0f") \(SliderProduct)")
+                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+            
+            
+            Slider(value: $sliderAmount, in: 0...range, step: stepCount)
+                .modifier(SliderViewMod(sliderValue: $sliderAmount))
         }
     }
 }
@@ -211,3 +196,70 @@ struct BatchSelectorMods: ViewModifier {
         }
     }
 }
+
+struct BatchSelectorMods2: ViewModifier{
+    var amount: String
+    var oH: Bool
+    var oF: Bool
+    var sliderValue: Double
+    func body(content: Content) -> some View {
+        if sliderValue > 0 {
+            content
+                .frame(width: 205, height: 75, alignment: .center)
+                .foregroundColor(Color.black)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 15.0)
+                        .stroke(lineWidth: 2.0)
+                        .foregroundColor(Color.black)
+                )    }
+        else {
+            if amount == "halfbag" {
+                content
+                .foregroundColor(oH ? Color.CFAred : Color.black)
+                .frame(width: 205, height: 75, alignment: .center)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(oH ? Color.CFAred : Color.black, lineWidth: 2)
+                )
+        }
+            if amount == "fullbag" {
+                content
+                .foregroundColor(oF ? Color.CFAred : Color.black)
+                .frame(width: 205, height: 75, alignment: .center)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(oF ? Color.CFAred : Color.black, lineWidth: 2)
+                )
+        }
+    }
+}
+}
+
+struct SliderViewMod: ViewModifier {
+    @Binding var sliderValue: Double
+    func body(content: Content) -> some View {
+        if sliderValue == 0 {
+            content
+            .padding()
+            .frame(width: 360, height: 75, alignment: .center)
+            .accentColor(Color.black)
+            .overlay(
+                RoundedRectangle(cornerRadius: 15.0)
+                    .stroke(lineWidth: 2.0)
+                    .foregroundColor(Color.black)
+            )
+        }
+        if sliderValue > 0 {
+            content
+            .padding()
+            .frame(width: 360, height: 75, alignment: .center)
+            .accentColor(Color.Cred)
+            .overlay(
+                RoundedRectangle(cornerRadius: 15.0)
+                    .stroke(lineWidth: 2.0)
+                    .foregroundColor(Color.Cred)
+            )
+        }
+    }
+}
+

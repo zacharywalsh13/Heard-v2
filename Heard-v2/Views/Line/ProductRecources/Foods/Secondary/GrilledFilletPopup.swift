@@ -30,7 +30,7 @@ struct GrilledFilletPopup: View{
                 GrilledFilletData.MultiBatch()
                 GrilledFilletData.sendRequest()
                 LineItems.GrilledFilletPopup.toggle()
-                Requests.updateRequestData(RequestUpdate: RequestModel(id: GrilledFilletData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(GrilledFilletData.FinalValue), productImage: "GrilledFilletsimg", productTitle: "GrilledFillets"), updateAmount: String(GrilledFilletData.FinalValue), time: 0)
+                Requests.updateRequestData(RequestUpdate: RequestModel(id: GrilledFilletData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(GrilledFilletData.FinalValue), productImage: "GrilledFilletsimg", productTitle: "GrilledFillets"), updateAmount: String(GrilledFilletData.FinalValue))
             }, label: {
                 Text("Send")
                     .bold()
@@ -63,7 +63,7 @@ struct GrilledFilletCommonRequests: View{
 
     var body: some View{
         ForEach(GrilledFilletCrVM.GrilledFilletCommonRequest) { CommonRequestModel in
-            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: GrilledFilletData.GrilledFilleto1, o2: GrilledFilletData.GrilledFilleto2, o3: GrilledFilletData.GrilledFilleto3, sliderValue: GrilledFilletData.sliderValue, function1: GrilledFilletData.o1True, function2: GrilledFilletData.o2True, function3: GrilledFilletData.o3True, functionH: GrilledFilletData.notHF, functionF: GrilledFilletData.notHF)
+            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: GrilledFilletData.GrilledFilleto1, o2: GrilledFilletData.GrilledFilleto2, o3: GrilledFilletData.GrilledFilleto3, oH: false, oF: false, sliderValue: GrilledFilletData.sliderValue, function1: GrilledFilletData.o1True, function2: GrilledFilletData.o2True, function3: GrilledFilletData.o3True, functionH: GrilledFilletData.notHF, functionF: GrilledFilletData.notHF)
         }
     }
 }

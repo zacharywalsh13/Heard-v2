@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Line_Secondary: View {
-    @StateObject var LineItems = LineViewModel()
+    @EnvironmentObject var LineItems: LineViewModel
     var body: some View {
         ZStack{
             VStack {

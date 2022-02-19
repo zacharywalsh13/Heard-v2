@@ -10,7 +10,7 @@ import Foundation
 
 class GrilledFilletImageVM: ObservableObject {
     var GrilledFilletImage: [ImageModel] = [
-        ImageModel(Rectanglewidth: 300, Rectangleheight: 300, productImage: "GrilledFilletsimg", ImageW: 300, ImageH: 300, xOfset: 0, yOfset: 0, productTitle: "GrilledFillet", foodTitleFSize: 40)
+        ImageModel(Rectanglewidth: 300, Rectangleheight: 300, productImage: "gfilletimg", ImageW: 300, ImageH: 300, xOfset: 0, yOfset: 0, productTitle: "GrilledFillet", foodTitleFSize: 40)
     ]
 }
 

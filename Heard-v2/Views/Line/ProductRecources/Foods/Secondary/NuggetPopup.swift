@@ -30,7 +30,7 @@ struct NuggetPopup: View{
                 NuggetData.MultiBatch()
                 NuggetData.sendRequest()
                 LineItems.NuggetPopup.toggle()
-                Requests.updateRequestData(RequestUpdate: RequestModel(id: NuggetData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(NuggetData.FinalValue), productImage: "nuggetsimg", productTitle: "Nuggets"), updateAmount: String(NuggetData.FinalValue), time: 0)
+                Requests.updateRequestData(RequestUpdate: RequestModel(id: NuggetData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(NuggetData.FinalValue), productImage: "nuggetsimg", productTitle: "Nuggets"), updateAmount: String(NuggetData.FinalValue))
             }, label: {
                 Text("Send")
                     .bold()
@@ -63,7 +63,7 @@ struct NuggetCommonRequests: View{
 
     var body: some View{
         ForEach(NuggetCrVM.NuggetCommonRequest) { CommonRequestModel in
-            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: NuggetData.Nuggeto1, o2: NuggetData.Nuggeto2, o3: NuggetData.Nuggeto3, sliderValue: NuggetData.sliderValue, function1: NuggetData.o1True, function2: NuggetData.o2True, function3: NuggetData.o3True, functionH: NuggetData.notHF, functionF: NuggetData.notHF)
+            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: NuggetData.Nuggeto1, o2: NuggetData.Nuggeto2, o3: NuggetData.Nuggeto3, oH: NuggetData.NuggetoH, oF: NuggetData.NuggetoF, sliderValue: NuggetData.sliderValue, function1: NuggetData.o1True, function2: NuggetData.o2True, function3: NuggetData.o3True, functionH: NuggetData.Half, functionF: NuggetData.Full)
         }
     }
 }
@@ -72,7 +72,7 @@ struct NuggetCommonRequests: View{
 struct NuggetSlider: View{
     @EnvironmentObject var NuggetData: NuggetDataVM
     var body: some View{
-        sliderReusable(SliderProduct: NuggetData.product, stepCount: NuggetData.stepCount, range: 24, sliderAmount: $NuggetData.sliderValue)
+        sliderReusable(SliderProduct: NuggetData.product, stepCount: NuggetData.stepCount, range: 12, sliderAmount: $NuggetData.sliderValue)
     }
 }
 

@@ -13,13 +13,29 @@ class RequestViewModel: ObservableObject {
 
     @Published var Request = [RequestModel]()
     
-    func updateRequestData(RequestUpdate: RequestModel, updateAmount: String, time: Int) {
+    func updateRequestData(RequestUpdate: RequestModel, updateAmount: String) {
         
         // Get a reference to the database
         let db = Firestore.firestore()
         
         // Set the data to update
-        db.collection("FoodRequest").document(RequestUpdate.id).setData(["productRequested":true,"amountRequested": updateAmount, "productSeconds": time], merge: true) { error in
+        db.collection("FoodRequest").document(RequestUpdate.id).setData(["productRequested":true,"amountRequested": updateAmount], merge: true) { error in
+            
+            // Check for errors
+            if error == nil {
+                // Get the new data
+                self.getData()
+            }
+        }
+    }
+    
+    func DEupdateRequestData(RequestUpdate: RequestModel) {
+        
+        // Get a reference to the database
+        let db = Firestore.firestore()
+        
+        // Set the data to update
+        db.collection("FoodRequest").document(RequestUpdate.id).setData(["productRequested":false,"amountRequested": ""], merge: true) { error in
             
             // Check for errors
             if error == nil {
@@ -56,4 +72,32 @@ class RequestViewModel: ObservableObject {
             }
         }
     }
+}
+
+
+class RequestFormatingViewModel: ObservableObject{
+    var RequestFont: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 40 * 0.75
+            } else {
+                return 40
+            }
+        }
+    
+    var ImageCircleWH: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 120 * 0.75
+            } else {
+                return 120 
+            }
+        }
+    
+    var RequestImageWH: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 170 * 0.75
+            } else {
+                return 170
+            }
+        }
+    
 }

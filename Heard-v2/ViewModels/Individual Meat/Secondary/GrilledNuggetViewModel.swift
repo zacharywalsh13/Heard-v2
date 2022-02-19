@@ -10,7 +10,7 @@ import Foundation
 
 class GrilledNuggetImageVM: ObservableObject {
     var GrilledNuggetImage: [ImageModel] = [
-        ImageModel(Rectanglewidth: 300, Rectangleheight: 300, productImage: "GrilledNuggetsimg", ImageW: 300, ImageH: 300, xOfset: 0, yOfset: 0, productTitle: "GrilledNugget", foodTitleFSize: 40)
+        ImageModel(Rectanglewidth: 300, Rectangleheight: 300, productImage: "gnuggetimg", ImageW: 300, ImageH: 300, xOfset: 0, yOfset: 0, productTitle: "GrilledNugget", foodTitleFSize: 40)
     ]
 }
 
@@ -25,21 +25,24 @@ class GrilledNuggetCommonRequestsVM: ObservableObject {
 }
 
 class GrilledNuggetDataVM: ObservableObject{
-    var product: String = "GrilledNuggets"
+    var product: String = "Cup/s"
     var stepCount: Double = 1
     @Published var sliderValue: Double = 0
     @Published var productSeconds: Int = 0
     
-    @Published var GrilledNuggeto1: Bool = true
+    @Published var GrilledNuggeto1: Bool = false
     @Published var GrilledNuggeto2: Bool = false
     @Published var GrilledNuggeto3: Bool = false
+    
+    @Published var GrilledNuggetoH: Bool = true
+    @Published var GrilledNuggetoF: Bool = false
     
     @Published var variableID: String = ""
     @Published var GrilledNuggetBatch1: Bool = false
     @Published var GrilledNuggetBatch2: Bool = false
     @Published var GrilledNuggetBatch3: Bool = false
     
-    @Published var FinalValue: Int = 0
+    @Published var FinalValue: String = ""
     
     func MultiBatch(){
         if GrilledNuggetBatch1 == false {
@@ -77,8 +80,16 @@ class GrilledNuggetDataVM: ObservableObject{
         GrilledNuggeto3 = true
         sliderValue = 0
     }
-    func notHF() {
-        print("Not hf")
+    func Half() {
+        GrilledNuggetoH = true
+        GrilledNuggetoF = false
+        sliderValue = 0
+    }
+    
+    func Full() {
+        GrilledNuggetoH = false
+        GrilledNuggetoF = true
+        sliderValue = 0
     }
     
     func sendRequest(){
@@ -86,23 +97,30 @@ class GrilledNuggetDataVM: ObservableObject{
             GrilledNuggeto1 = false
             GrilledNuggeto2 = false
             GrilledNuggeto3 = false
-            
-            FinalValue =  (Int(sliderValue))
+            GrilledNuggetoF = false
+            GrilledNuggetoH = false
+            FinalValue =  (String(sliderValue))
             print(FinalValue)
         }
         if GrilledNuggeto1 == true {
-            FinalValue = 12
+            FinalValue = String(12)
             print(FinalValue)
         }
         
         if GrilledNuggeto2 == true {
-            FinalValue = 16
+            FinalValue = String(16)
             print(FinalValue)
         }
         
         if GrilledNuggeto3 == true {
-            FinalValue = 20
+            FinalValue = String(20)
             print(FinalValue)
+        }
+        if GrilledNuggetoF == true {
+            FinalValue = "Full-Batch"
+        }
+        if GrilledNuggetoH == true {
+            FinalValue = "Half-Batch"
         }
     }
     

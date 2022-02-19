@@ -17,7 +17,7 @@ struct StripPopup: View{
                 StripData.MultiBatch()
                 StripData.sendRequest()
                 LineItems.StripPopup.toggle()
-                Requests.updateRequestData(RequestUpdate: RequestModel(id: StripData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(StripData.FinalValue), productImage: "Stripsimg", productTitle: "Strips"), updateAmount: String(StripData.FinalValue), time: 0)
+                Requests.updateRequestData(RequestUpdate: RequestModel(id: StripData.variableID, productSeconds: 0, productRequested: true, amountRequested: String(StripData.FinalValue), productImage: "Stripsimg", productTitle: "Strips"), updateAmount: String(StripData.FinalValue))
             }, label: {
                 Text("Send")
                     .bold()
@@ -50,7 +50,7 @@ struct StripCommonRequests: View{
 
     var body: some View{
         ForEach(StripCrVM.StripCommonRequest) { CommonRequestModel in
-            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: StripData.Stripo1, o2: StripData.Stripo2, o3: StripData.Stripo3, sliderValue: StripData.sliderValue, function1: StripData.o1True, function2: StripData.o2True, function3: StripData.o3True, functionH: StripData.notHF, functionF: StripData.notHF)
+            CommonRequestReusable(HForNUM: CommonRequestModel.HForNUM, n1: CommonRequestModel.n1, n2: CommonRequestModel.n2, n3: CommonRequestModel.n3, o1: StripData.Stripo1, o2: StripData.Stripo2, o3: StripData.Stripo3, oH: false,oF: false, sliderValue: StripData.sliderValue, function1: StripData.o1True, function2: StripData.o2True, function3: StripData.o3True, functionH: StripData.notHF, functionF: StripData.notHF)
         }
     }
 }

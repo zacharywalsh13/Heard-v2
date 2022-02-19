@@ -25,21 +25,24 @@ class NuggetCommonRequestsVM: ObservableObject {
 }
 
 class NuggetDataVM: ObservableObject{
-    var product: String = "Nuggets"
+    var product: String = "Cup/s"
     var stepCount: Double = 1
     @Published var sliderValue: Double = 0
     @Published var productSeconds: Int = 0
     
-    @Published var Nuggeto1: Bool = true
+    @Published var Nuggeto1: Bool = false
     @Published var Nuggeto2: Bool = false
     @Published var Nuggeto3: Bool = false
+    
+    @Published var NuggetoH: Bool = true
+    @Published var NuggetoF: Bool = false
     
     @Published var variableID: String = ""
     @Published var NuggetBatch1: Bool = false
     @Published var NuggetBatch2: Bool = false
     @Published var NuggetBatch3: Bool = false
     
-    @Published var FinalValue: Int = 0
+    @Published var FinalValue: String = ""
     
     func MultiBatch(){
         if NuggetBatch1 == false {
@@ -77,8 +80,16 @@ class NuggetDataVM: ObservableObject{
         Nuggeto3 = true
         sliderValue = 0
     }
-    func notHF() {
-        print("Not hf")
+    func Half() {
+        NuggetoH = true
+        NuggetoF = false
+        sliderValue = 0
+    }
+    
+    func Full() {
+        NuggetoH = false
+        NuggetoF = true
+        sliderValue = 0
     }
     
     func sendRequest(){
@@ -86,23 +97,30 @@ class NuggetDataVM: ObservableObject{
             Nuggeto1 = false
             Nuggeto2 = false
             Nuggeto3 = false
-            
-            FinalValue =  (Int(sliderValue))
+            NuggetoF = false
+            NuggetoH = false
+            FinalValue =  (String(sliderValue))
             print(FinalValue)
         }
         if Nuggeto1 == true {
-            FinalValue = 12
+            FinalValue = String(12)
             print(FinalValue)
         }
         
         if Nuggeto2 == true {
-            FinalValue = 16
+            FinalValue = String(16)
             print(FinalValue)
         }
         
         if Nuggeto3 == true {
-            FinalValue = 20
+            FinalValue = String(20)
             print(FinalValue)
+        }
+        if NuggetoF == true {
+            FinalValue = "Full-Batch"
+        }
+        if NuggetoH == true {
+            FinalValue = "Half-Batch"
         }
     }
     

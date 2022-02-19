@@ -15,13 +15,16 @@
 import SwiftUI
 
 struct MasterRequest2: View {
+    
     @ObservedObject var Requests = RequestViewModel()
+    @ObservedObject var Formating = RequestFormatingViewModel()
+    
     var body: some View {
         VStack {
             HStack {
                 Text("Requests")
                     .bold()
-                    .font(.system(size: 40))
+                    .font(.system(size: Formating.RequestFont))
                     .padding()
             }
             ForEach(Requests.Request) { item in
@@ -29,13 +32,13 @@ struct MasterRequest2: View {
                     HStack(){
                         Circle()
                             .foregroundColor(.Cred)
-                            .frame(width: 120, height: 120, alignment: .center)
+                            .frame(width: Formating.ImageCircleWH, height: Formating.ImageCircleWH, alignment: .center)
                             .padding(2.5)
                             .overlay(
                                 Image(item.productImage)
                                     .resizable()
-                                    .frame(width: 170, height: 170, alignment: .center)
-                                    .offset(x: 2.5, y: 0)
+                                    .frame(width: Formating.RequestImageWH, height: Formating.RequestImageWH, alignment: .center)
+                                    .offset(x: 0, y: 0)
                             )
                         VStack {
                             Text(item.productTitle)
@@ -56,6 +59,7 @@ struct MasterRequest2: View {
                             )
                         
                         Button(action: {
+                            Requests.DEupdateRequestData(RequestUpdate: RequestModel(id: item.id, productSeconds: item.productSeconds, productRequested: false, amountRequested: "", productImage: item.productImage, productTitle: item.productTitle))
                         }
                         , label: {
                             Text("Heard?")
