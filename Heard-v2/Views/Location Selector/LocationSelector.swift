@@ -59,7 +59,7 @@ struct LocationSelector2: View {
             }
             NavigationLink(destination: Line_Primary().navigationBarBackButtonHidden(false), tag: "primary", selection: $LocationItems.NavigationState) { EmptyView()
             }
-            NavigationLink(destination: Line_Secondary().navigationBarBackButtonHidden(true), tag: "secondary", selection: $LocationItems.NavigationState) { EmptyView()
+            NavigationLink(destination: Line_Secondary().navigationBarBackButtonHidden(false), tag: "secondary", selection: $LocationItems.NavigationState) { EmptyView()
             }
             
         }

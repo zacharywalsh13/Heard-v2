@@ -78,7 +78,7 @@ class RequestViewModel: ObservableObject {
 class RequestFormatingViewModel: ObservableObject{
     var RequestFont: CGFloat {
             if UIDevice.current.userInterfaceIdiom == .phone {
-                return 40 * 0.75
+                return 40 * 0.45
             } else {
                 return 40
             }
@@ -86,7 +86,7 @@ class RequestFormatingViewModel: ObservableObject{
     
     var ImageCircleWH: CGFloat {
             if UIDevice.current.userInterfaceIdiom == .phone {
-                return 120 * 0.75
+                return 120 * 0.45
             } else {
                 return 120 
             }
@@ -94,10 +94,111 @@ class RequestFormatingViewModel: ObservableObject{
     
     var RequestImageWH: CGFloat {
             if UIDevice.current.userInterfaceIdiom == .phone {
-                return 170 * 0.75
+                return 170 * 0.45
             } else {
                 return 170
             }
         }
     
+    var ProductTitleFont: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 40 * 0.45
+            } else {
+                return 40
+            }
+        }
+    var ProductAmountFrameW: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 160 * 0.45
+            } else {
+                return 160
+            }
+        }
+    var ProductAmountFrameH: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 150 * 0.45
+            } else {
+                return 150
+            }
+        }
+    
+    var TimerCornerRadius: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 12.5 * 0.45
+            } else {
+                return 12.5
+            }
+        }
+    
+    var TimerFont: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 60 * 0.45
+            } else {
+                return 60
+            }
+        }
+    
+    var TimerFrameW: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 200 * 0.45
+            } else {
+                return 200
+            }
+        }
+    
+    var TimerFrameH: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 120 * 0.45
+            } else {
+                return 120
+            }
+        }
+    
+    var HeardButtonFrameW: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 200 * 0.45
+            } else {
+                return 200
+            }
+        }
+    
+    var HeardButtonFrameH: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 120 * 0.45
+            } else {
+                return 120
+            }
+        }
+    
+    var HeardButtonCornerRadius: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 15 * 0.45
+            } else {
+                return 15
+            }
+        }
+    
+    var RequestTemplateW: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 770 * 0.455
+            } else {
+                return 770
+            }
+        }
+    
+    var RequestTemplateH: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 150 * 0.45
+            } else {
+                return 150
+            }
+        }
+    
+    var RequestTemplateCornerRadius: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 15 * 0.45
+            } else {
+                return 15
+            }
+        }
 }

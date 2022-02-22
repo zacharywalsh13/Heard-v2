@@ -17,6 +17,43 @@ class LineViewModel: ObservableObject {
     @Published var GrilledNuggetPopup: Bool = false
     @Published var GrilledFilletPopup: Bool = false
 
+    var foodTitleFSize: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 45 * 0.7
+            } else {
+                return 45
+            }
+        }
+    var FSize: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 50 * 0.7
+            } else {
+                return 50
+            }
+        }
+    var ImageWH: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 450 * 0.7
+            } else {
+                return 450
+            }
+        }
+    var backgroundCircleWH: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 200 * 0.7
+            } else {
+                return 200
+            }
+        }
+    var RectangleWH: CGFloat {
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                return 350 * 0.7
+            } else {
+                return 350
+            }
+        }
+    
+
     @Published var products1: [ItemLabel] = [
         ItemLabel(Rectanglewidth: 350, Rectangleheight: 350, backgroundCircleW: 200, backgroundCircleH: 200, ImageW: 450, ImageH: 450, FSize: 50, SSpacing: 0, foodTitleFSize: 45, SColor: Color.Cgreen, productImage: "nuggetsimg", productTitle: "Nuggets", xOfset: -3, yOfset: 15),
         ItemLabel(Rectanglewidth: 350, Rectangleheight: 350, backgroundCircleW: 200, backgroundCircleH: 200, ImageW: 400, ImageH: 400, FSize: 50, SSpacing: 0, foodTitleFSize: 45, SColor: Color.Cgreen, productImage: "stripimg", productTitle: "Strips",xOfset: 17, yOfset: 0)
