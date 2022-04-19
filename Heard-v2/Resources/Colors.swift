@@ -13,12 +13,12 @@ extension Color {
     static let lightGray = Color(red: 211 / 255, green: 211 / 255, blue: 211 / 255)
     static let reallyLightGrey = Color(red: 236 / 255, green: 236 / 255, blue: 236 / 255)
     static let FontBlue = Color(red: 31 / 255, green: 78 / 255, blue: 110 / 255)
-    static let StripGreen = Color(red: 78, green: 156, blue: 111)
-    static let SpicyRed = Color(red: 203, green: 43, blue: 56)
-    static let FiletBlue = Color(red: 32, green: 77, blue: 111)
+    static let StripGreen = Color(red: 78 / 255, green: 156 / 255, blue: 111 / 255)
+    static let SpicyRed = Color(red: 203 / 255, green: 43 / 255, blue: 56 / 255)
+    static let FiletBlue = Color(red: 32 / 255, green: 77 / 255, blue: 111 / 255)
     static let NuggetPink = Color(red: 239 / 255, green: 195 / 255, blue: 186 / 255)
     static let breakfastBlue = Color(red: 96 / 255, green: 175 / 255, blue: 197 / 255)
-    
+    static let mintGreeen = Color(red: 62 / 255, green: 180 / 255, blue: 137 / 255)
     
     // Need to be removed throughout app
     static let CFAred = Color(red: 229 / 255, green: 22 / 255, blue: 54 / 255)

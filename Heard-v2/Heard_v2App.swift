@@ -18,25 +18,26 @@ struct Heard_v2App: App {
     @StateObject var StripDataEO = StripDataVM()
     @StateObject var GrilledNuggetDataEO = GrilledNuggetDataVM()
     @StateObject var GrilledFilletDataEO = GrilledFilletDataVM()
-
-
+    @StateObject var Timers = RequestTimers()
+    //    @StateObject var stateHandler = stateHandler()
+    
+    
     init() {
         FirebaseApp.configure()
     }
     
     var body: some Scene {
         WindowGroup {
-            NavigationView{
-                LoginView(LoginItems: loginViewModel())
-            }
-            .navigationViewStyle(StackNavigationViewStyle())
-            .environmentObject(LineItems)
-            .environmentObject(FilletDataEO)
-            .environmentObject(SpicyFilletDataEO)
-            .environmentObject(NuggetDataEO)
-            .environmentObject(StripDataEO)
-            .environmentObject(GrilledNuggetDataEO)
-            .environmentObject(GrilledFilletDataEO)
+            ContentViewNew()
+                .environmentObject(RequestTimers())
+                .environmentObject(LineItems)
+                .environmentObject(FilletDataEO)
+                .environmentObject(SpicyFilletDataEO)
+                .environmentObject(NuggetDataEO)
+                .environmentObject(StripDataEO)
+                .environmentObject(GrilledNuggetDataEO)
+                .environmentObject(GrilledFilletDataEO)
+            //            .environmentObject(stateHandler)
         }
     }
 }
