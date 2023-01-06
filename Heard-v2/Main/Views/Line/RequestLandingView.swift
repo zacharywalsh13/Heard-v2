@@ -74,7 +74,7 @@ struct plusButton: View{
         Circle()
 //            .strokeBorder(Color.white, lineWidth: 0.1)
             .frame(width: circleDimensions, height: circleDimensions)
-            .foregroundColor(Color.FiletBlue)
+            .foregroundColor(Color.black)
             .padding()
             .overlay(
                 Image(systemName: "plus")

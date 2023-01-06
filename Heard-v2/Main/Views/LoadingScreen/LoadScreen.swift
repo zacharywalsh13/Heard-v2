@@ -93,7 +93,7 @@ struct DotView: View {
     var body: some View {
         Circle()
             .frame(width: frame, height: frame)
-            .foregroundColor(.FiletBlue)
+            .foregroundColor(.black)
             .scaleEffect(scale)
             .animation(Animation.easeInOut(duration: 0.6).repeatForever().delay(delay))
             .onAppear {
